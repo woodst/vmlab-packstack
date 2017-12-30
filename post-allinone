@@ -1,0 +1,11 @@
+neutron net-create public --provider:network_type flat --provider:physical_network extnet  --router:external
+neutron subnet-create --name woodsnet --enable_dhcp=false --allocation-pool=start=10.10.50.50,end=10.10.50.200 --gateway=10.10.50.254 public 10.10.50.0/24
+curl http://download.cirros-cloud.net/0.3.4/cirros-0.3.4-x86_64-disk.img | glance image-create --name='cirros' --visibility=public --container-format=bare --disk-format=qcow2
+neutron router-create border-router
+neutron router-gateway-set border-router public
+neutron net-create NET1
+neutron subnet-create --name SUBNET1 NET1 10.10.90.0/24
+neutron net-create NET2
+neutron subnet-create --name SUBNET2 NET2 10.10.91.0/24
+neutron router-interface-add border-router SUBNET1
+neutron router-interface-add border-router SUBNET2

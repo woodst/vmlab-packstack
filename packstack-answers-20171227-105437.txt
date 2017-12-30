@@ -798,13 +798,13 @@ CONFIG_NEUTRON_VPNAAS=n
 # Comma-separated list of network-type driver entry points to be
 # loaded from the neutron.ml2.type_drivers namespace. ['local',
 # 'flat', 'vlan', 'gre', 'vxlan', 'geneve']
-CONFIG_NEUTRON_ML2_TYPE_DRIVERS=vxlan,flat,vlan,local
+CONFIG_NEUTRON_ML2_TYPE_DRIVERS=vxlan,flat
 
 # Comma-separated, ordered list of network types to allocate as
 # tenant networks. The 'local' value is only useful for single-box
 # testing and provides no connectivity between hosts. ['local',
 # 'vlan', 'gre', 'vxlan', 'geneve']
-CONFIG_NEUTRON_ML2_TENANT_NETWORK_TYPES=vxlan,vlan,local
+CONFIG_NEUTRON_ML2_TENANT_NETWORK_TYPES=vxlan
 
 # Comma-separated ordered list of networking mechanism driver entry
 # points to be loaded from the neutron.ml2.mechanism_drivers
@@ -876,7 +876,7 @@ CONFIG_NEUTRON_OVS_BRIDGE_MAPPINGS=extnet:br-ex
 # issuing the following command: packstack --allinone --os-neutron-
 # ovs-bridge-mappings=ext-net:br-ex --os-neutron-ovs-bridge-interfaces
 # =br-ex:eth0
-CONFIG_NEUTRON_OVS_BRIDGE_IFACES=br-ex:enp0s20f1
+CONFIG_NEUTRON_OVS_BRIDGE_IFACES=
 
 # Comma-separated list of Open vSwitch bridges that must be created
 # and connected to interfaces in compute nodes when flat or vlan type
@@ -886,7 +886,7 @@ CONFIG_NEUTRON_OVS_BRIDGE_IFACES=br-ex:enp0s20f1
 # compute=br-vlan --os-neutron-ovs-bridge-mappings="extnet:br-
 # ex,physnet1:br-vlan" --os-neutron-ovs-bridge-interfaces="br-ex:eth1
 # ,br-vlan:eth2"
-CONFIG_NEUTRON_OVS_BRIDGES_COMPUTE=br-ex
+CONFIG_NEUTRON_OVS_BRIDGES_COMPUTE=
 
 # Name of physical network used for external network when enabling
 # CONFIG_PROVISION_DEMO. Name must be one of the included in
@@ -1140,7 +1140,7 @@ CONFIG_SWIFT_KS_PW=bff026b7ed2c4853
 # device; Packstack does not create the filesystem, you must do this
 # first). If left empty, Packstack creates a loopback device for test
 # setup.
-CONFIG_SWIFT_STORAGES=/dev/sdj1,/dev/sdk1,/dev/sdl1,/dev/sdm1,/dev/sdn1,/dev/sdo1,/dev/sdp1
+CONFIG_SWIFT_STORAGES=
 
 # Number of Object Storage storage zones; this number MUST be no
 # larger than the number of configured storage devices.
@@ -1151,7 +1151,7 @@ CONFIG_SWIFT_STORAGE_ZONES=1
 CONFIG_SWIFT_STORAGE_REPLICAS=1
 
 # File system type for storage nodes. ['xfs', 'ext4']
-CONFIG_SWIFT_STORAGE_FSTYPE=xfs
+CONFIG_SWIFT_STORAGE_FSTYPE=ext4
 
 # Custom seed number to use for swift_hash_path_suffix in
 # /etc/swift/swift.conf. If you do not provide a value, a seed number
@@ -1167,7 +1167,7 @@ CONFIG_HEAT_DB_PW=PW_PLACEHOLDER
 
 # Encryption key to use for authentication in the Orchestration
 # database (16, 24, or 32 chars).
-CONFIG_HEAT_AUTH_ENC_KEY=b8ac4c2156664e14
+CONFIG_HEAT_AUTH_ENC_KEY=c254cd886dd34c6f
 
 # Password to use for the Orchestration service to authenticate with
 # the Identity service.
@@ -1191,7 +1191,7 @@ CONFIG_HEAT_DOMAIN_ADMIN=heat_admin
 CONFIG_HEAT_DOMAIN_PASSWORD=PW_PLACEHOLDER
 
 # Specify 'y' to provision for demo usage and testing. ['y', 'n']
-CONFIG_PROVISION_DEMO=n
+CONFIG_PROVISION_DEMO=y
 
 # Specify 'y' to configure the OpenStack Integration Test Suite
 # (tempest) for testing. The test suite requires OpenStack Networking
