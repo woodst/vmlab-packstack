@@ -1,0 +1,64 @@
+#!/bin/bash
+
+# Stop any multi-disks
+echo
+echo "======= Stopping any multidisks ======="
+echo
+for mdsk in $(lsblk --output="KNAME" | grep "md" | uniq)
+do
+    mdadm --stop /dev/$mdsk
+done
+
+
+# Remove the volume groups
+echo
+echo "======= Removing Volume Groups ======="
+echo
+VGS=$(vgdisplay  -C -o vg_name  --noheadings)
+
+for i in $VGS
+    do
+        vgremove $i
+    done
+printf "\n"
+
+
+#Wipe the first 250MB of each drive
+echo
+echo "======= Delete partitions, wipe both ends of drive, new GPT's ======="
+echo
+
+# Special case, clean up /dev/sdu
+sgdisk -d=3 /dev/sdu
+sgdisk -d=2 /dev/sdu
+
+for sdsk in $(lsblk --noheadings --output="PKNAME")
+do          
+    sgdisk -d=1 /dev/$sdsk
+    dd bs=512 seek=0 count=500000 if=/dev/zero of=/dev/$sdsk
+    dd bs=512 seek=$(($(blockdev --getsz /dev/sda) - 500000)) count=500000 if=/dev/zero of=/dev/$sdsk
+    sgdisk -Z /dev/$sdsk
+done 
+
+# specifically create partitions on each of the 16 JBOD drives.
+echo
+echo "======= Make JBOD partitions ======="
+echo
+
+sgdisk -n 1:2048:1465149168 -t 1:8300 /dev/sda
+sgdisk -n 1:2048:1465149168 -t 1:8300 /dev/sdb
+sgdisk -n 1:2048:1465149168 -t 1:8300 /dev/sdc
+sgdisk -n 1:2048:1465149168 -t 1:8300 /dev/sdd
+sgdisk -n 1:2048:1465149168 -t 1:8300 /dev/sde
+sgdisk -n 1:2048:1465149168 -t 1:8300 /dev/sdf
+sgdisk -n 1:2048:1465149168 -t 1:8300 /dev/sdg
+sgdisk -n 1:2048:1465149168 -t 1:8300 /dev/sdh
+sgdisk -n 1:2048:1465149168 -t 1:8300 /dev/sdi
+sgdisk -n 1:2048:1465149168 -t 1:8300 /dev/sdj
+sgdisk -n 1:2048:1465149168 -t 1:8300 /dev/sdk
+sgdisk -n 1:2048:1465149168 -t 1:8300 /dev/sdl
+sgdisk -n 1:2048:1465149168 -t 1:8300 /dev/sdm
+sgdisk -n 1:2048:1465149168 -t 1:8300 /dev/sdn
+sgdisk -n 1:2048:1465149168 -t 1:8300 /dev/sdo
+sgdisk -n 1:2048:1465149168 -t 1:8300 /dev/sdp
+
