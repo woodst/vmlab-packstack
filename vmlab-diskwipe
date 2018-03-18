@@ -45,20 +45,20 @@ echo
 echo "======= Make JBOD partitions ======="
 echo
 
-sgdisk -n 1:2048:1465149168 -t 1:8300 /dev/sda
-sgdisk -n 1:2048:1465149168 -t 1:8300 /dev/sdb
-sgdisk -n 1:2048:1465149168 -t 1:8300 /dev/sdc
-sgdisk -n 1:2048:1465149168 -t 1:8300 /dev/sdd
-sgdisk -n 1:2048:1465149168 -t 1:8300 /dev/sde
-sgdisk -n 1:2048:1465149168 -t 1:8300 /dev/sdf
-sgdisk -n 1:2048:1465149168 -t 1:8300 /dev/sdg
-sgdisk -n 1:2048:1465149168 -t 1:8300 /dev/sdh
-sgdisk -n 1:2048:1465149168 -t 1:8300 /dev/sdi
-sgdisk -n 1:2048:1465149168 -t 1:8300 /dev/sdj
-sgdisk -n 1:2048:1465149168 -t 1:8300 /dev/sdk
-sgdisk -n 1:2048:1465149168 -t 1:8300 /dev/sdl
-sgdisk -n 1:2048:1465149168 -t 1:8300 /dev/sdm
-sgdisk -n 1:2048:1465149168 -t 1:8300 /dev/sdn
-sgdisk -n 1:2048:1465149168 -t 1:8300 /dev/sdo
-sgdisk -n 1:2048:1465149168 -t 1:8300 /dev/sdp
+sgdisk -n 1:2048:1465149134 -t 1:8300 /dev/sda
+sgdisk -n 1:2048:1465149134 -t 1:8300 /dev/sdb
+sgdisk -n 1:2048:1465149134 -t 1:8300 /dev/sdc
+sgdisk -n 1:2048:1465149134 -t 1:8300 /dev/sdd
+sgdisk -n 1:2048:1465149134 -t 1:8300 /dev/sde
+sgdisk -n 1:2048:1465149134 -t 1:8300 /dev/sdf
+sgdisk -n 1:2048:1465149134 -t 1:8300 /dev/sdg
+sgdisk -n 1:2048:1465149134 -t 1:8300 /dev/sdh
+sgdisk -n 1:2048:1465149134 -t 1:8300 /dev/sdi
+sgdisk -n 1:2048:1465149134 -t 1:8300 /dev/sdj
+sgdisk -n 1:2048:1465149134 -t 1:8300 /dev/sdk
+sgdisk -n 1:2048:1465149134 -t 1:8300 /dev/sdl
+sgdisk -n 1:2048:1465149134 -t 1:8300 /dev/sdm
+sgdisk -n 1:2048:1465149134 -t 1:8300 /dev/sdn
+sgdisk -n 1:2048:1465149134 -t 1:8300 /dev/sdo
+sgdisk -n 1:2048:1465149134 -t 1:8300 /dev/sdp
 
